@@ -1,0 +1,573 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Rukshin Sanyal</title>
+    <link rel="icon" type="image/png" href="avatar.png" />
+    <link rel="apple-touch-icon" href="avatar.png" />
+    <meta name="description" content="Personal website of Rukshin Sanyal" />
+    <style>
+      :root {
+        --bg: #0b0d10;
+        --card: #12161c;
+        --text: #e9eef5;
+        --muted: #a9b4c2;
+        --border: rgba(255, 255, 255, 0.08);
+        --accent: #7aa7ff;
+      }
+
+      * { box-sizing: border-box; }
+      html, body { height: 100%; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+        background: radial-gradient(1200px 600px at 20% 0%, rgba(122,167,255,0.18), transparent 60%),
+                    radial-gradient(900px 500px at 80% 20%, rgba(122,167,255,0.12), transparent 55%),
+                    var(--bg);
+        color: var(--text);
+        line-height: 1.5;
+      }
+
+      .container {
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 48px 20px 80px;
+      }
+
+      header {
+        display: grid;
+        grid-template-columns: 280px 1fr;
+        gap: 22px;
+        align-items: center;
+        padding: 22px;
+        border: 1px solid var(--border);
+        background: rgba(18, 22, 28, 0.75);
+        backdrop-filter: blur(8px);
+        border-radius: 18px;
+      }
+
+      .avatar {
+        width: 280px;
+        height: 280px;
+        border-radius: 16px;
+        object-fit: cover;
+        border: 1px solid var(--border);
+        background: rgba(255,255,255,0.03);
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 34px;
+        letter-spacing: -0.02em;
+      }
+
+      .subtitle {
+        margin: 6px 0 0;
+        color: var(--muted);
+        max-width: 62ch;
+      }
+
+      .links {
+        margin-top: 14px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 12px;
+        border-radius: 999px;
+        border: 1px solid var(--border);
+        background: rgba(255,255,255,0.03);
+        color: var(--text);
+        text-decoration: none;
+        font-size: 14px;
+      }
+
+      .chip:hover { border-color: rgba(122,167,255,0.45); }
+
+      .section-tabs {
+        margin-top: 14px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .section-tab {
+        display: inline-flex;
+        align-items: center;
+        padding: 8px 12px;
+        border-radius: 999px;
+        border: 1px solid var(--border);
+        background: rgba(255,255,255,0.03);
+        color: var(--text);
+        text-decoration: none;
+        font-size: 14px;
+      }
+
+      .section-tab:hover { border-color: rgba(122,167,255,0.45); }
+
+      .back-to-top {
+        position: fixed;
+        right: 18px;
+        bottom: 18px;
+        z-index: 50;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 14px;
+        border-radius: 999px;
+        border: 1px solid var(--border);
+        background: rgba(18, 22, 28, 0.9);
+        color: var(--text);
+        text-decoration: none;
+        font-size: 13px;
+      }
+
+      .back-to-top:hover { border-color: rgba(122,167,255,0.45); }
+
+      main {
+        margin-top: 26px;
+        display: grid;
+        gap: 18px;
+      }
+
+      section {
+        border: 1px solid var(--border);
+        background: rgba(18, 22, 28, 0.6);
+        border-radius: 18px;
+        padding: 22px;
+      }
+
+      .section-title {
+        margin: 0 0 12px;
+        font-size: 18px;
+        color: var(--text);
+        letter-spacing: -0.01em;
+      }
+
+      .section-note {
+        margin: 0 0 16px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .timeline {
+        position: relative;
+        margin-top: 8px;
+        padding-left: 28px;
+        display: grid;
+        gap: 14px;
+      }
+
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 9px;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: var(--border);
+      }
+
+      .timeline-item {
+        display: block;
+      }
+
+      .timeline-content {
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 14px 16px;
+        background: rgba(255,255,255,0.03);
+        position: relative;
+      }
+
+      .timeline-content::before {
+        content: "";
+        position: absolute;
+        left: -23px;
+        top: 16px;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--accent);
+        box-shadow: 0 0 0 3px rgba(122, 167, 255, 0.25);
+      }
+
+      .timeline-compact {
+        gap: 8px;
+      }
+
+      .timeline-compact .timeline-content {
+        padding: 8px 10px;
+      }
+
+      .timeline-compact .timeline-content::before {
+        top: 10px;
+        width: 7px;
+        height: 7px;
+      }
+
+      .timeline-compact .timeline-title {
+        font-size: 14px;
+      }
+
+      .timeline-compact .timeline-meta {
+        margin-top: 1px;
+        font-size: 11px;
+      }
+
+      .timeline-title {
+        margin: 0;
+        font-size: 16px;
+      }
+
+      .timeline-meta {
+        margin: 4px 0 0;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      ul {
+        margin: 10px 0 0;
+        padding-left: 18px;
+        color: var(--text);
+      }
+
+      li { margin: 6px 0; color: var(--muted); }
+      li strong { color: var(--text); font-weight: 600; }
+
+      footer {
+        margin-top: 26px;
+        color: var(--muted);
+        font-size: 13px;
+        text-align: center;
+      }
+
+      @media (max-width: 768px) {
+        .container { padding: 24px 14px 48px; }
+
+        header {
+          grid-template-columns: 1fr;
+          text-align: center;
+          padding: 16px;
+        }
+
+        .avatar {
+          width: min(220px, 70vw);
+          height: min(220px, 70vw);
+          margin: 0 auto;
+        }
+
+        h1 { font-size: 28px; }
+        .links, .section-tabs { justify-content: center; }
+        section { padding: 16px; border-radius: 14px; }
+        .timeline { padding-left: 20px; }
+        .timeline::before { left: 7px; }
+        .timeline-content::before { left: -18px; }
+      }
+
+      @media (max-width: 420px) {
+        h1 { font-size: 24px; }
+        .chip, .section-tab { font-size: 13px; padding: 7px 10px; }
+      }
+    </style>
+  </head>
+
+  <body id="top">
+    <div class="container">
+      <header>
+        <!-- Replace "rukshin.png" with your image file name (place it in the same folder). -->
+        <img class="avatar" src="rukshin.png" alt="Profile photo of Rukshin Sanyal" />
+
+        <div>
+          <h1>Rukshin Sanyal</h1>
+          <p class="subtitle">
+            I am deeply passionate about language and acting. I love exploring how words, voice, and performance
+            connect people, tell meaningful stories, and bring ideas to life with authenticity and emotion.
+          </p>
+
+          <div class="links">
+            <!-- Update these links -->
+            <a class="chip" href="mailto:rukshin@gmail.com">Email</a>
+            <a class="chip" href="https://www.linkedin.com/in/rukshin-sanyal-a606aa121/" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a class="chip" href="/RukshinSanyal2025.pdf" target="_blank" rel="noreferrer">Resume (PDF)</a>
+          </div>
+        </div>
+      </header>
+
+      <nav class="section-tabs" aria-label="Section navigation">
+        <a class="section-tab" href="#creative-performance-linguistic">Creative, Performance and Linguistic Portfolio</a>
+        <a class="section-tab" href="#corporate-experience">Corporate Experience</a>
+        <a class="section-tab" href="#education-training">Education and Training</a>
+      </nav>
+
+      <main>
+        <section id="creative-performance-linguistic">
+          <h2 class="section-title">Creative, Performance and Linguistic Portfolio</h2>
+          <div class="timeline timeline-compact">
+            <article class="timeline-item">
+              <div class="timeline-content">
+                <h3 class="timeline-title">Improv Theater</h3>
+                <p class="timeline-meta">2025 onwards</p>
+                <ul>
+                  <li>Participating in improv theater with Chady Seubert in Prignitz, Germany</li>
+                  <li>Learning techniques of short form, long form and theatre of the oppressed</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="timeline-item">
+              <div class="timeline-content">
+                <h3 class="timeline-title">Voice Acting</h3>
+                <p class="timeline-meta">2021-2022</p>
+                <ul>
+                  <li>Mage &amp; Machine, Season 2 (Full Season), Pendant Audio:<br><a href="https://www.pendantaudio.com/shows/mage" target="_blank" rel="noreferrer">https://www.pendantaudio.com/shows/mage</a></li>
+                  <li>Seminar (2 Episodes), Pendant Audio:<br><a href="https://www.pendantaudio.com/seminareps/Seminar97master.mp3" target="_blank" rel="noreferrer">https://www.pendantaudio.com/seminareps/Seminar97master.mp3</a><br><a href="https://www.pendantaudio.com/seminareps/Seminar99master.mp3" target="_blank" rel="noreferrer">https://www.pendantaudio.com/seminareps/Seminar99master.mp3</a></li>
+                  <li>Constants (Episode 11, reused in Episode 12 - Part 2), Sean Heyboer:<br><a href="https://www.constantspodcast.com/listen" target="_blank" rel="noreferrer">www.constantspodcast.com/listen</a></li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="timeline-item">
+              <div class="timeline-content">
+                <h3 class="timeline-title">Workshops with Children</h3>
+                <p class="timeline-meta">2010 onwards</p>
+                <ul>
+                  <li>Facilitated interactive workshop on Indian culture</li>
+                  <li>Conducted an interactive workshop on Indian religions (Hinduism &amp; Buddhism) at the Montessori-Grundschule "Maria Sibylla Merian"in 2025</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="timeline-item">
+              <div class="timeline-content">
+                <h3 class="timeline-title">Translation</h3>
+                <p class="timeline-meta">2010 to 2020</p>
+                <ul>
+                  <li>Translated two fiction novels:<br><a href="https://www.babelcube.com/user/rukshin-farokh-shaher" target="_blank" rel="noreferrer">https://www.babelcube.com/user/rukshin-farokh-shaher</a></li>
+                  <li>Handled translation of short messages as well as longer documents for the <a href="SamarpanTranslationCertificate.pdf" target="_blank" rel="noreferrer">Samarpan Mediation e.V.</a></li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="timeline-item">
+              <div class="timeline-content">
+                <h3 class="timeline-title">Live Interpretation</h3>
+                <p class="timeline-meta">2010 to 2020</p>
+                <ul>
+                  <li>Provided live interpretation in real-time settings for audiences upto 1000 partipants</li>
+                  <li>Supported smooth and accurate communication of questions from the audience and answers from the speaker including moderation of the Q&A</li>
+                </ul>
+                <p><a href="SamarpanTranslationCertificate.pdf" target="_blank" rel="noreferrer">Samarpan Meditation e.V.</a></p>
+              </div>
+            </article>
+
+            <article class="timeline-item">
+              <div class="timeline-content">
+                <h3 class="timeline-title">Conversational Language Teaching</h3>
+                <p class="timeline-meta">2007 to 2010</p>
+                <ul>
+                  <li>Weekly sessions with a teen for fluency in spoken English</li>
+                  <li>Weekly sessions with an adult to help improve professional communication in the workplace</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="timeline-item">
+              <div class="timeline-content">
+                <h3 class="timeline-title">Tourist Guide</h3>
+                <p class="timeline-meta">2005-2006</p>
+                <ul>
+                  <li>Worked as a tourist guide.</li>
+                  <li>Led tours for foreign tourists in French.</li>
+                  <li>Selected to take the then President of India, A. P. J. Abdul Kalam, on a guided tour.</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="timeline-item">
+              <div class="timeline-content">
+                <h3 class="timeline-title">Just a Minute (JAM)</h3>
+                <p class="timeline-meta">2001</p>
+                <ul>
+                  <li>Participated in JAM speaking events focused on spontaneity and articulation.</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="timeline-item">
+              <div class="timeline-content">
+                <h3 class="timeline-title">Elocution</h3>
+                <p class="timeline-meta">1998 to 2001</p>
+                <ul>
+                  <li>Won several elocution competitions at the school, inter-school and community levels.</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="timeline-item">
+              <div class="timeline-content">
+                <h3 class="timeline-title">Stage Acting</h3>
+                <p class="timeline-meta">1998 to 2001</p>
+                <ul>
+                  <li>Participated in school plays</li>
+                  <li>Built skills in character portrayal and scene building</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="timeline-item">
+              <div class="timeline-content">
+                <h3 class="timeline-title">Event Compering</h3>
+                <p class="timeline-meta">1998 to 2001</p>
+                <ul>
+                  <li>Hosted school and community events including wedding events</li>
+                </ul>
+              </div>
+            </article>
+
+          </div>
+        </section>
+
+        <section id="corporate-experience">
+          <h2 class="section-title">Corporate Experience</h2>
+          <div class="timeline timeline-compact">
+            <article class="timeline-item">
+              <div class="timeline-content">
+                <h3 class="timeline-title">Veridos</h3>
+                <p class="timeline-meta">2022 onwards - Test Manager (contracted through IT Test Pro GmbH)</p>
+              </div>
+            </article>
+
+            <article class="timeline-item">
+              <div class="timeline-content">
+                <h3 class="timeline-title">CLE</h3>
+                <p class="timeline-meta">2020 to 2022 - Test Analyst (contracted through IT Test Pro GmbH)</p>
+              </div>
+            </article>
+
+            <article class="timeline-item">
+              <div class="timeline-content">
+                <h3 class="timeline-title">REWE</h3>
+                <p class="timeline-meta">2017 to 2018 - Data Manager (contracted through IT Test Pro GmbH)</p>
+              </div>
+            </article>
+
+            <article class="timeline-item">
+              <div class="timeline-content">
+                <h3 class="timeline-title">Audi</h3>
+                <p class="timeline-meta">2017 - Testing and Defect Management (contracted through IT Test Pro GmbH)</p>
+              </div>
+            </article>
+
+            <article class="timeline-item">
+              <div class="timeline-content">
+                <h3 class="timeline-title">Adidas</h3>
+                <p class="timeline-meta">2014 to 2017 - Test Analyst and Test Manager (contracted through IT Test Pro GmbH)</p>
+              </div>
+            </article>
+
+            <article class="timeline-item">
+              <div class="timeline-content">
+                <h3 class="timeline-title">Reebok</h3>
+                <p class="timeline-meta">2014 to 2017 - Testing and Defect Management (contracted through IT Test Pro GmbH)</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section id="education-training">
+          <h2 class="section-title">Education and Training</h2>
+          <div class="timeline timeline-compact">
+            <article class="timeline-item">
+              <div class="timeline-content">
+                <h3 class="timeline-title">Masters in Library and Information Science</h3>
+                <p class="timeline-meta">2023 - University of Boras</p>
+              </div>
+            </article>
+
+            <article class="timeline-item">
+              <div class="timeline-content">
+                <h3 class="timeline-title">IT Infrastructure Library Foundation Course</h3>
+                <p class="timeline-meta">2016 - Axelos (October 2016)</p>
+              </div>
+            </article>
+
+            <article class="timeline-item">
+              <div class="timeline-content">
+                <h3 class="timeline-title">Teaching English as a Foreign Language Certification</h3>
+                <p class="timeline-meta">2013 - ODLQC (March 2013)</p>
+              </div>
+            </article>
+
+            <article class="timeline-item">
+              <div class="timeline-content">
+                <h3 class="timeline-title">Masters in Computational Linguistics</h3>
+                <p class="timeline-meta">2007 - University of Essex</p>
+              </div>
+            </article>
+
+            <article class="timeline-item">
+              <div class="timeline-content">
+                <h3 class="timeline-title">Bachelors in History</h3>
+                <p class="timeline-meta">2006 - University of Mumbai</p>
+              </div>
+            </article>
+
+            <article class="timeline-item">
+              <div class="timeline-content">
+                <h3 class="timeline-title">Diplomas in Commercial French: Levels 1 and 2</h3>
+                <p class="timeline-meta">2004 to 2005 - Alliance Francaise de Bombay</p>
+              </div>
+            </article>
+
+            <article class="timeline-item">
+              <div class="timeline-content">
+                <h3 class="timeline-title">Advanced Diploma in French Language and Culture</h3>
+                <p class="timeline-meta">2004 - Alliance Francaise de Bombay</p>
+              </div>
+            </article>
+
+            <article class="timeline-item">
+              <div class="timeline-content">
+                <h3 class="timeline-title">Diploma in French Language</h3>
+                <p class="timeline-meta">2003 - Alliance Francaise de Bombay</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+      </main>
+
+      <footer>
+        © <span id="year"></span> Rukshin Sanyal
+      </footer>
+    </div>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+    <a class="back-to-top" href="#top" aria-label="Back to top">Back to Top</a>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
