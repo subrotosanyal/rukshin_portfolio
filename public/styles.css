@@ -13,9 +13,7 @@ html { scroll-behavior: smooth; }
 body {
   margin: 0;
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
-  background: radial-gradient(1200px 600px at 20% 0%, rgba(122,167,255,0.18), transparent 60%),
-              radial-gradient(900px 500px at 80% 20%, rgba(122,167,255,0.12), transparent 55%),
-              var(--bg);
+  background: #000;
   color: var(--text);
   line-height: 1.5;
 }
@@ -102,6 +100,20 @@ h1 {
 
 .section-tab:hover { border-color: rgba(122,167,255,0.45); }
 
+a {
+  color: #8fd3ff;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1.5px;
+}
+
+a:visited {
+  color: #9bc7ff;
+}
+
+a:hover,
+a:focus-visible {
+  color: #c9e9ff;
+}
 .back-to-top {
   position: fixed;
   right: 18px;
@@ -266,3 +278,5 @@ footer {
   h1 { font-size: 24px; }
   .chip, .section-tab { font-size: 13px; padding: 7px 10px; }
 }
+
+
