@@ -99,6 +99,8 @@ h1 {
 }
 
 .section-tab:hover { border-color: rgba(122,167,255,0.45); }
+.section-tab:visited,
+.section-tab:active { color: var(--text); }
 
 a {
   color: #8fd3ff;
@@ -278,5 +280,6 @@ footer {
   h1 { font-size: 24px; }
   .chip, .section-tab { font-size: 13px; padding: 7px 10px; }
 }
+
 
 
