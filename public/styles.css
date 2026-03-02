@@ -10,6 +10,7 @@
 * { box-sizing: border-box; }
 html, body { height: 100%; }
 html { scroll-behavior: smooth; }
+img { max-width: 100%; height: auto; }
 body {
   margin: 0;
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
@@ -26,7 +27,7 @@ body {
 
 header {
   display: grid;
-  grid-template-columns: 280px 1fr;
+  grid-template-columns: minmax(220px, 280px) 1fr;
   gap: 22px;
   align-items: center;
   padding: 22px;
@@ -47,7 +48,7 @@ header {
 
 h1 {
   margin: 0;
-  font-size: 34px;
+  font-size: clamp(1.6rem, 3.4vw, 2.125rem);
   letter-spacing: -0.02em;
 }
 
@@ -108,6 +109,8 @@ a {
   color: #8fd3ff;
   text-underline-offset: 2px;
   text-decoration-thickness: 1.5px;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 a:visited {
@@ -273,7 +276,16 @@ footer {
   }
 
   h1 { font-size: 28px; }
-  .links, .section-tabs { justify-content: center; }
+  .links { justify-content: center; }
+  .section-tabs {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .section-tab {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
   section { padding: 16px; border-radius: 14px; }
   .timeline { padding-left: 20px; }
   .timeline::before { left: 7px; }
@@ -283,6 +295,11 @@ footer {
 @media (max-width: 420px) {
   h1 { font-size: 24px; }
   .chip, .section-tab { font-size: 13px; padding: 7px 10px; }
+  .back-to-top {
+    right: 12px;
+    bottom: 12px;
+    padding: 8px 12px;
+  }
 }
 
 
